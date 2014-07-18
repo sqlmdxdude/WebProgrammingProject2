@@ -33,12 +33,26 @@
     // Create a post which should be run from createPost.php
     function createPost($blogID, $title, $content){
         $sql = "INSERT INTO posts (blogID, title, content) values ($blogID, '$title', '$content');"
+        if(runDML($sql)){
+            return $GLOBALS['POST_CREATED_SUCCESSFULLY'];
+        }
+        return $GLOBALS['POST_CREATION_FAILED'];
     }
     // Edit a post which should be run from editPost.php
-    function editPost(){
+    function editPost($postID, $content){
+        $sql = "UPDATE posts SET content = '$content' WHERE postID = $postID;";
+        if(runDML($sql)){
+            return $GLOBALS['POST_EDITED_SUCCESSFULLY'];
+        }
+        return $GLOBALS['POST_EDIT_FAILED'];
     }
     // Delete a post which should be run from deletePost.php
-    function deletePost(){
+    function deletePost($postID){
+        $sql = "DELETE FROM posts WHERE postID = $postID;";
+        if(runDML($sql)){
+            return $GLOBALS['POST_DELETED_SUCCESSFULLY'];
+        }
+        return $GLOBALS['POST_DELETE_FAILED'];
     }
     // Delete a comment which should be run from deleteComment.php
     function deleteComment(){
