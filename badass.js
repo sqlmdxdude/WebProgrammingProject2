@@ -1,0 +1,1 @@
+// Bad Ass Javascript by Bad Ass Blogs, Inc.
