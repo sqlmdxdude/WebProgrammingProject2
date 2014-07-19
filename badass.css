@@ -33,6 +33,12 @@ h6{
     width: 400px;
     margin-left: auto;
     margin-right: auto;
+}
+#notification{
+    text-size: .7em;
+    color: #FF0000;
+    font-family: 'Arial', sans-serif;
+}
 #blogcontainermain{
 }
 #blogcontainersub{

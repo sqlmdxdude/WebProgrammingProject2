@@ -14,17 +14,19 @@
         <title>Create A Blog</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="badass.css" type="text/css" rel="Stylesheet" media="Screen" />
+        <script src="badass.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="main">
             <div id="header"><h2>Create A Blog</h2></div>
             <div>
-                <form id="createblog" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <form id="createblog" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onsubmit="return validateCreateBlog();" >
                     <?php 
                         if(userAlreadyOwnsBlog($_SESSION["userID"])){ ?>
                             <p>You may only have one blog. We found your blog. Click <a href="">here</a> to go to your blog</p>
                         <?php } else { ?>
                             <span class="label">Enter a blog name: </span><input type="text" name="blogname" id="blogname" placeholder="enter blog name" /> <input type="submit" value="Create Blog" />
+                            <div id="notification"></div>
                        <?php } ?>
                 </form>
             </div>
