@@ -55,16 +55,38 @@
         return $GLOBALS['POST_DELETE_FAILED'];
     }
     // Delete a comment which should be run from deleteComment.php
-    function deleteComment(){
+    function deleteComment($commentID){
+        $sql = "DELETE FROM comments WHERE commentID = $commentID;";
+        if(runDML($sql)){
+            return $GLOBALS['COMMENT_DELETED_SUCCESSFULLY'];
+        }
+        return $GLOBALS['COMMENT_DELETE_FAILED'];
     }
     // Add a comment which should be run from addComment.php
-    function addComment(){
+    function addComment($postID, $userID, $content){
+        $sql = "INSERT INTO comments (postID, userID, content) values ($postID, $userID, '$content');"
+        if(runDML($sql)){
+            return $GLOBALS['COMMENT_ADDED_SUCCESSFULLY'];
+        }
+        return $GLOBALS['COMMENT_ADD_FAILED'];
     }
     // Get a list of blogs available in the system
     function getBlogs(){
+        $con = getConnection();
+        $sql = "SELECT blogID, blogOwner, title, firstname + ' ' + lastname as name FROM blogs a inner join users b on a.blogOwner=b.id;";
+        if($result = mysqli_query($con, $sql)){
+            return $result;
+        }
+        return null;        
     }
     // Get a post the user selected which should be run from viewPost.php
-    function viewPost(){
+    function viewPost($postID){
+        $con = getConnection();
+        $sql = "SELECT title, content, date FROM posts where postID=$postID";
+        if($result = mysqli_query($con, $sql)){
+            return $result;
+        }
+        return null;   
     }
     // Tests if user already has blog
     function userAlreadyOwnsBlog($blogOwner){
