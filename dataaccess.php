@@ -32,7 +32,7 @@
     }
     // Create a post which should be run from createPost.php
     function createPost($blogID, $title, $content){
-        $sql = "INSERT INTO posts (blogID, title, content) values ($blogID, '$title', '$content');"
+        $sql = "INSERT INTO posts (blogID, title, content) values ($blogID, '$title', '$content');";
         if(runDML($sql)){
             return $GLOBALS['POST_CREATED_SUCCESSFULLY'];
         }
@@ -64,7 +64,7 @@
     }
     // Add a comment which should be run from addComment.php
     function addComment($postID, $userID, $content){
-        $sql = "INSERT INTO comments (postID, userID, content) values ($postID, $userID, '$content');"
+        $sql = "INSERT INTO comments (postID, userID, content) values ($postID, $userID, '$content');";
         if(runDML($sql)){
             return $GLOBALS['COMMENT_ADDED_SUCCESSFULLY'];
         }
@@ -92,7 +92,9 @@
     function userAlreadyOwnsBlog($blogOwner){
         $con = getConnection();
         $sql = "SELECT * FROM blogs where blogOwner=$blogOwner;";
-        if(mysqli_num_rows(mysqli_query($con, $sql))>0){
+        $result=mysqli_query($con, $sql);
+        $numrows = mysqli_num_rows($result);
+        if($numrows>0){
             return true;
         }
         return false;
