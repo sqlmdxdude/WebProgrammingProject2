@@ -73,7 +73,7 @@
     // Get a list of blogs available in the system
     function getBlogs(){
         $con = getConnection();
-        $sql = "SELECT blogID, blogOwner, title, firstname + ' ' + lastname as name FROM blogs a inner join users b on a.blogOwner=b.id;";
+        $sql = "SELECT blogID, blogOwner, title, CONCAT(firstname, ' ', lastname) as name FROM blogs a inner join users b on a.blogOwner=b.id;";
         if($result = mysqli_query($con, $sql)){
             return $result;
         }
