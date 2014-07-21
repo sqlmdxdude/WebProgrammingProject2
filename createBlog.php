@@ -7,6 +7,9 @@
     include_once "sessionManager.php";
     include_once "dataaccess.php";
     $_SESSION["userID"]=2;
+    if(isset($_POST["blogname"])){
+        $blogID = createBlog($_SESSION["userID"], $_POST["blogname"]);
+    }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -23,10 +26,10 @@
                 <form id="createblog" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onsubmit="return validateCreateBlog();" >
                     <?php 
                         if(userAlreadyOwnsBlog($_SESSION["userID"])){ ?>
-                            <p>You may only have one blog. We found your blog. Click <a href="">here</a> to go to your blog</p>
+                            <p>You may only have one blog. We found your blog. Click <a href="<?php echo "#"; /* put a reference to the blog here for the link */ ?>">here</a> to go to your blog</p>
                         <?php } else { ?>
                             <span class="label">Enter a blog name: </span><input type="text" name="blogname" id="blogname" placeholder="enter blog name" /> <input type="submit" value="Create Blog" />
-                            <div id="notification"></div>
+                            <div id="notification"><?php if(isset($_POST["blogname"]) && $blogID != null){ echo "Your blog titled '".$_POST["blogname"]."' was created successfully. <a href=''>Goto your blog</a>";} ?></div>
                        <?php } ?>
                 </form>
             </div>
