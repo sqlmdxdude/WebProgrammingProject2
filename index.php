@@ -1,6 +1,7 @@
 <?php 
     include_once "dataaccess.php";
     include_once "constants.php";
+    include_once "sessionManager.php";
     
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -12,7 +13,7 @@
     </head>
     <body>
         <div id="main">
-            <div id="header"><div id="loginstatus"><?php echo "Logged in as Snarf"; ?></div><div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
+            <div id="header"><div id="loginstatus"><?php echo "Logged in as ".  $_SESSION["AUTHENTICATED_USER"]; ?></div><div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
             <div id="blogcontainermain">
                 <table id="availableblogs" name="availableblogs" class="bloglistings">
                     <tr><th>Blog Name</th><th>Blog Owner</th></tr>

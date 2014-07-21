@@ -8,5 +8,6 @@ session_start();
 // AUTHENTICATION_TICKET after login this ticket will be passed around as
 //                       the credential that verifies the authenticity of the user
 $_SESSION["AUTHENTICATION_TICKET"] = "";
-
+$_SESSION["AUTHENTICATED_USER"] = "Liono";
+$_SESSION["AUTHENTICATED_BLOGID"] = "";
 ?>

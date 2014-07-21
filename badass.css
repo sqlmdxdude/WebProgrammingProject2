@@ -17,6 +17,13 @@ h5{
 }
 h6{
 }
+a, a:visited, a:hover, a:active{
+    color: #000000;
+    text-decoration:  none;
+}
+a:hover{
+    text-decoration:  underline;
+}
 /* For document structure */
 #main{
     width: 800px;
