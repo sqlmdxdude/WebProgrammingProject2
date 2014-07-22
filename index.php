@@ -12,7 +12,8 @@
     </head>
     <body>
         <div id="main">
-            <div id="header"><div id="loginstatus"><?php echo "Logged in as Snarf"; ?></div><div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
+            <div id="header"><div id="loginstatus"><?php echo "Logged in as Snarf"; ?></div>
+            <div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
             <div id="blogcontainermain">
                 <table id="availableblogs" name="availableblogs" class="bloglistings">
                     <tr><th>Blog Name</th><th>Blog Owner</th></tr>
