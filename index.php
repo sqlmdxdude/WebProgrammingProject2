@@ -14,7 +14,12 @@
     <body>
         <div id="main">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div id="header"><div id="loginstatus"><?php echo "Logged in as ".  $_SESSION["AUTHENTICATED_USER"]; ?></div><div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
+=======
+            <div id="header"><div id="loginstatus"><?php echo "Logged in as Snarf"; ?></div>
+            <div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
+>>>>>>> origin/master
 =======
             <div id="header"><div id="loginstatus"><?php echo "Logged in as Snarf"; ?></div>
             <div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
