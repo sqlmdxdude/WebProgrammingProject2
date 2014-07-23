@@ -64,13 +64,13 @@
 		<?php
 			if (isset($_POST['submit'])){
 				$submit = $_POST['submit'];
+				$content = $_POST['content'];
 				if ($submit == 'edit'){
 					edit();
 				}else if ($submit == 'create'){
 					echo '<h1>';
-					print_r($_POST);
+					createPost($_SESSION["AUTHENTICATED_BLOGID"], $result['title'], $content);
 					echo '</h1>';
-					//create();
 				} else if($submit== 'delete'){
 					delete();
 				}
