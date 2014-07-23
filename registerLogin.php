@@ -1,5 +1,6 @@
 <?php 
     include_once "sessionManager.php";
+    include_once "dataaccess.php";
 ?>
 <html>
 	<head>
@@ -13,13 +14,13 @@
 			First Name: <input type="text" name="firstName"></input><br>
 			Last Name: <input type="text" name="lastName"></input><br>
 			Username: <input type="text" name="registerUsername"></input><br>
-			Password: <input type="text" name="registerPassword"></input><br><br>
+			Password: <input type="password" name="registerPassword"></input><br><br>
 			<button type="submit">Register</button>
 		</form>
 		<h2>Already Registered? Login Here:</h2><hr>
 		<form id="form_login" action="" method="post">
 			Username: <input type="text" name="loginUsername"></input><br>
-			Password: <input type="text" name="loginPassword"></input><br><br>
+			Password: <input type="password" name="loginPassword"></input><br><br>
 			<button type="submit">Login</button>
 		</form>
 		<?php
