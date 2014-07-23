@@ -63,7 +63,7 @@ a:hover{
     width: 100px;
 }
 /* For document presentation */
-table.bloglistings{    
+.bloglistings, .postlistings{    
     width: 400px;
     margin-left: auto;
     margin-right: auto;
