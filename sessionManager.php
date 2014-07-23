@@ -21,4 +21,7 @@ if(!isset($_SESSION["AUTHENTICATED_BLOGID"]))
 // POSTID is the postid used by the database to retrieve a  specific post
 if(!isset($_SESSION["POSTID"]))
     $_SESSION["POSTID"] = "";
+
+if(!isset($_SESSION["USERID"]))
+    $_SESSION["USERID"] = "";
 ?>

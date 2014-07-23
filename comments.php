@@ -15,8 +15,8 @@
 		<?php
 			if(isset($_POST["contentBox"])){
 				$comContent = $_POST["contentBox"];
-				$userId = 123123;//getUserId($_SESSION["username"]);
-				$postId = 2;//$_SESSION["POSTID"];
+				$userId = getUserId($_SESSION["USERID"]);
+				$postId = $_SESSION["POSTID"];
 				addComment($postId, $userId, $comContent);
 
 				echo "<table align='center'>";
