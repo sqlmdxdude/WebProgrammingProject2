@@ -21,7 +21,7 @@
             if(mysqli_num_rows($results)>0){
             ?><table id="userposts"><tr><th>Post Title</th><th>Edit</th><th>Delete</th></tr><?php
             while($row=mysqli_fetch_assoc($results)){
-                echo "<tr><td>".$row["title"]."</td><td>".$row["postID"]."</td><td>".$row["postID"]."</td></tr>";
+                echo "<tr><td>".$row["title"]."</td><td>".$row["postID"]."</td><td><form id='delete' method='post' action=''><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Delete Post' /></form></td></tr>";
                 }
             ?></table><?php
             }
