@@ -1,8 +1,7 @@
-
-
 <?php
- 	include_once("dataaccess.php");
-	include_once("constants.php");
+    include_once "sessionManager.php";
+ 	include_once "dataaccess.php";
+	include_once "constants.php";
 // Authenticate user
 
 ?>
@@ -14,6 +13,12 @@
 		<link href="badass.css" type="text/css" rel="Stylesheet" media="screen" />
 	</head>
 	<body>
+        <?php   
+            $results = getAllPosts($_SESSION["AUTHENTICATED_BLOGID"]);
+            while($row=mysqli_fetch_assoc($results)){
+                
+            }
+         ?>
 		<form name="form_post" action="" method="post" onsubmit="validate()">
 		
 		<?php 
