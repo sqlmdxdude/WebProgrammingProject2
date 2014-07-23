@@ -17,14 +17,16 @@
 				addComment($postId, $userId, $comContent);
 			}
 
-            echo $_GET["postID"];
+                if(isset($_POST["commentID"])){
+                $deletedComment=deleteComment($_POST["commentID"]);
+                }
             $comments = getAllComments($_GET["postID"]);
             if(mysqli_num_rows($comments)>0){
                 while($row = mysqli_fetch_assoc($comments)){;
                 echo "<div class='singleComment'>";
                 echo "<div class='commentheader'>".$row["user"]." - " . $row["date"]."</div>";
                 echo "<div class='commentcontent'>".$row["content"]."</div>";
-                echo "<a href='viewPost.php?commentID=".$row["commentID"]."&postID=".$_GET["postID"] ."'>Delete this comment</a>";
+                echo "<form id='deletepost' action='viewPost.php?postID=".$_GET["postID"] ."' method='post'><input type='hidden' name='commentID' value='".$row["commentID"]."' /><input type='hidden' name='postID' value='".$_GET["postID"] ."'/><input type='submit' value='Delete this comment' /></form>";
                 echo "</div>";
                 
                 }
