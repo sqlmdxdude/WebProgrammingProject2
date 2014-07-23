@@ -66,6 +66,7 @@
 					$row = mysqli_fetch_array($searchResult);
 					$_SESSION["username"] = $username;
 					$_SESSION["firstName"] = $row['FirstName'];
+                    $_SESSION["AUTHENTICATED_USER"] = $row['FirstName'];
 					$_SESSION["AUTHENTICATION_TICKET"] = TRUE;
 					echo "<p>You are now logged in.</p>";
 					redirect('index.php', false);
