@@ -1,7 +1,6 @@
 /* set some global stuff here and then define classes to tweak presentations */
 body{
     margin: 0;
-    background-color: #336699;
     font-family: Verdana, Tahoma, Arial, sans-serif;
     font-size: 16px;
 }
@@ -42,7 +41,6 @@ a:hover{
     margin-right: auto;
 }
 #notification{
-    text-size: .7em;
     color: #FF0000;
     font-family: 'Arial', sans-serif;
 }
@@ -53,13 +51,11 @@ a:hover{
 #loginstatus{
     display:inline;
     float: left;
-    font-size: .5em;
     width: 100px;
 }
 #logout{
     display:inline;
     float: right;
-    font-size: .5em;
     width: 100px;
 }
 #allcomments{
