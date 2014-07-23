@@ -131,7 +131,8 @@
     // Get all comments for this post
     function getAllComments($postID){
         $con = getConnection();
-        $sql = "SELECT CONCAT(FirstName, ' ', LastName) as user, content, date from comments a inner join users b on a.userID = b.ID where postID = '$postID' ORDER BY DATE DESC;";
+        $sql = "SELECT CONCAT(FirstName, ' ', LastName) as user, content, date, commentID from comments a inner join users b on a.userID = b.ID where postID = '$postID' ORDER BY DATE DESC;";
+        echo $sql;
         if($result = mysqli_query($con, $sql)){
             return $result;
         }

@@ -17,17 +17,19 @@
 				addComment($postId, $userId, $comContent);
 			}
 
-
+            echo $_GET["postID"];
             $comments = getAllComments($_GET["postID"]);
             if(mysqli_num_rows($comments)>0){
-                while($row = mysqli_fetch_assoc($comments)){
+                while($row = mysqli_fetch_assoc($comments)){;
                 echo "<div class='singleComment'>";
                 echo "<div class='commentheader'>".$row["user"]." - " . $row["date"]."</div>";
                 echo "<div class='commentcontent'>".$row["content"]."</div>";
+                echo "<a href='viewPost.php?commentID=".$row["commentID"]."&postID=".$_GET["postID"] ."'>Delete this comment</a>";
                 echo "</div>";
                 
                 }
             }
+            releaseSQLResource($comments);
 
 		?>
     </div>
