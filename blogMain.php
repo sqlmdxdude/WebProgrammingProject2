@@ -14,14 +14,13 @@
         <?php  $blogExists = blogExists($_GET["blogID"]); ?>
         <div id="main">
             <div id="header"><div id="loginstatus"><?php echo "Logged in as " .$_SESSION["AUTHENTICATED_USER"] ; ?></div>
-            <div id="logout"><a href="registerLogin.php">Log Out</a></div><?php if($blogExists){ ?><h2>Here are your posts.</h2><?php }  ?></div>
+            <div id="logout"><a href="www.captainadams.com/registerLogin.php">Log Out</a></div><?php if($blogExists){ ?><h2>Here are your posts.</h2><?php }  ?></div>
                 
 
                  <?php   if($blogExists){ ?>
                             <div id="blogactions"><a href="post.php?blogID=<?php echo $_GET["blogID"]; ?>">Create A Post</a></div>
                 <?php }
                 ?>
-
 
             <div style="clear: both;"></div>
             <div id="blogcontainermain">
