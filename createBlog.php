@@ -25,8 +25,8 @@
             <div>
                 <form id="createblog" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" onsubmit="return validateCreateBlog();" >
                     <?php 
-                        if(userAlreadyOwnsBlog($_SESSION["userID"])){ ?>
-                            <p>You may only have one blog. We found your blog. Click <a href="<?php echo "#"; /* put a reference to the blog here for the link */ ?>">here</a> to go to your blog</p>
+                        if($blogID=userAlreadyOwnsBlog($_SESSION["userID"])){ ?>
+                            <p>You may only have one blog. We found your blog. Click <a href="<?php echo "blogMain.php/blogID=$blogID"; /* put a reference to the blog here for the link */ ?>">here</a> to go to your blog</p>
                         <?php } else { ?>
                             <span class="label">Enter a blog name: </span><input type="text" name="blogname" id="blogname" placeholder="enter blog name" /> <input type="submit" value="Create Blog" />
                             <div id="notification"><?php if(isset($_POST["blogname"]) && $blogID != null){ echo "Your blog titled '".$_POST["blogname"]."' was created successfully. <a href=''>Goto your blog</a>";} ?></div>

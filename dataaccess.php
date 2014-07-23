@@ -91,13 +91,30 @@
     // Tests if user already has blog
     function userAlreadyOwnsBlog($blogOwner){
         $con = getConnection();
-        $sql = "SELECT * FROM blogs where blogOwner=$blogOwner;";
+        $sql = "SELECT blogID FROM blogs where blogOwner=$blogOwner;";
         $result=mysqli_query($con, $sql);
         $numrows = mysqli_num_rows($result);
         if($numrows>0){
-            return true;
+            $blogID = mysqli_fetch_array($result);
+            return $blogID["blogID"];
         }
         return false;
+    }
+    // Get all posts the blog contains
+    function getAllPosts($blogID){
+        $con = getConnection();
+        $sql = "SELECT postID, title, date from posts where blogID = '$blogID';";
+        if($result = mysqli_query($con, $sql)){
+            return $result;
+        }
+    }
+    // Get specific post
+    function getPosts($postID){
+        $con = getConnection();
+        $sql = "SELECT title, date, content from posts where postID = '$postID' order by date desc;";
+        if($result = mysqli_query($con, $sql)){
+            return $result;
+        }
     }
     //Get user ID from username
     function getUserId($username){
