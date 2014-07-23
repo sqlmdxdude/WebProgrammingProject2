@@ -14,7 +14,7 @@
     <body>
         <div id="main">
             <div id="header"><div id="loginstatus"><?php echo "Logged in as Snarf"; ?></div>
-            <div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
+            <div id="logout"><a href="registerLogin.php">Log Out</a></div><h2>Available Blogs</h2></div>
             <div id="blogcontainermain">
                 <?php 
 					if (isset($_GET['postID'])){
