@@ -13,10 +13,17 @@
 		<link href="badass.css" type="text/css" rel="Stylesheet" media="screen" />
 	</head>
 	<body>
+        <div id="main">
+        <div id="header"><div id="loginstatus"><?php echo "Logged in as ".  $_SESSION["AUTHENTICATED_USER"]; ?></div>
+            <div id="logout"><a href="registerLogin.php">Log Out</a></div><h2>Available Blogs</h2></div>
         <?php   
             $results = getAllPosts($_SESSION["AUTHENTICATED_BLOGID"]);
+            if(mysqli_num_rows($results)>0){
+            ?><table id="userposts"><tr><th>Post Title</th><th>Edit</th><th>Delete</th></tr><?php
             while($row=mysqli_fetch_assoc($results)){
-                
+                echo "<tr><td>".$row["title"]."</td><td>".$row["postID"]."</td><td>".$row["postID"]."</td></tr>";
+                }
+            ?></table><?php
             }
          ?>
 		<form name="form_post" action="" method="post" onsubmit="validate()">
@@ -107,5 +114,6 @@
 				}
 			}
 		?>
+        </div>
 	</body>
 </html>
