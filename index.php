@@ -3,7 +3,7 @@
     include_once "constants.php";
     include_once "sessionManager.php";
     
-    if($_SESSION["AUTHENTICATION_TICKET"])
+    if(!$_SESSION["AUTHENTICATION_TICKET"])
         redirect('registerLogin.php', false);
 
 ?>
