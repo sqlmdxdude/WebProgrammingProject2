@@ -67,7 +67,7 @@
 					$_SESSION["firstName"] = $row['FirstName'];
 					$_SESSION["AUTHENTICATION_TICKET"] = TRUE;
 					echo "<p>You are now logged in.</p>";
-					redirect('index.php');
+					redirect('index.php', false);
 				}
 					
 			}
