@@ -1,3 +1,5 @@
+USE test;
+
 CREATE TABLE blogs (
 blogID INT NOT NULL AUTO_INCREMENT,
 blogOwner INT NOT NULL,
