@@ -10,10 +10,10 @@ session_start();
 if(!isset($_SESSION["AUTHENTICATION_TICKET"]))  $_SESSION["AUTHENTICATION_TICKET"] = FALSE;
 
 // AUTHENTICATED_USER is the name of the user after login is verified   
-if(!isset($_SESSION["AUTHENTICATED_USER"]))  $_SESSION["AUTHENTICATED_USER"] = "Liono";
+if(!isset($_SESSION["AUTHENTICATED_USER"]))  $_SESSION["AUTHENTICATED_USER"] = "";
 
 // AUTHENTICATED_BLOGID is the blogid of the user if they already have a blog after they login
-if(!isset($_SESSION["AUTHENTICATED_BLOGID"]))  $_SESSION["AUTHENTICATED_BLOGID"] = "1";
+if(!isset($_SESSION["AUTHENTICATED_BLOGID"]))  $_SESSION["AUTHENTICATED_BLOGID"] = "";
 
 // POSTID is the postid used by the database to retrieve a  specific post
 if(!isset($_SESSION["POSTID"]))
