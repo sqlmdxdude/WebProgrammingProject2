@@ -99,6 +99,15 @@
         }
         return false;
     }
+    //Get user ID from username
+    function getUserId($username){
+        $con = getConnection();
+        $sql = "SELECT ID FROM users where username='$username';";
+        if($result = mysqli_query($con, $sql)){
+            return $result;
+        }
+    }
+
     // Runs any Data Manipulation Language Query, a.k.a. Insert, Update or Delete
     function runDML($dml){
         $con = getConnection();
