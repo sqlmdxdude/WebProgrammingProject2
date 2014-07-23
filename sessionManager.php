@@ -20,6 +20,6 @@ if(!isset($_SESSION["POSTID"]))
     $_SESSION["POSTID"] = "";
 
 if(!isset($_SESSION["USERID"]))
-    $_SESSION["USERID"] = "";
+    $_SESSION["USERID"] = "1";
 
 ?>

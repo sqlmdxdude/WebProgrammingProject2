@@ -64,7 +64,7 @@
     }
     // Add a comment which should be run from addComment.php
     function addComment($postID, $userID, $content){
-        $sql = "INSERT INTO comments (postID, userID, content) values ($postID, $userID, '$content');";
+        $sql = "INSERT INTO comments (postID, userID, content, date) values ($postID, $userID, '$content', NOW());";
         if(runDML($sql)){
             return $GLOBALS['COMMENT_ADDED_SUCCESSFULLY'];
         }
