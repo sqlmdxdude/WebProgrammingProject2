@@ -113,7 +113,15 @@
     // Get all posts the blog contains
     function getAllPosts($blogID){
         $con = getConnection();
-        $sql = "SELECT postID, title, date from posts where blogID = '$blogID';";
+        $sql = "SELECT postID, title, date from posts where blogID = '$blogID' ORDER BY DATE DESC;";
+        if($result = mysqli_query($con, $sql)){
+            return $result;
+        }
+    }
+    // Get all comments for this post
+    function getAllComments($postID){
+        $con = getConnection();
+        $sql = "SELECT CONCAT(FirstName, ' ', LastName) as user, content, date from comments a inner join users b on a.userID = b.ID where postID = '$postID' ORDER BY DATE DESC;";
         if($result = mysqli_query($con, $sql)){
             return $result;
         }

@@ -1,4 +1,5 @@
 <?php 
+    include_once "sessionManager.php";
     include_once "dataaccess.php";
     include_once "constants.php";
     
