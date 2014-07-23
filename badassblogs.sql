@@ -29,3 +29,8 @@ userID INT NOT NULL,
 content TEXT NULL,
 date DATETIME,
 CONSTRAINT PK_COMMENTS PRIMARY KEY (commentID));
+
+INSERT INTO blogs (blogOwner, title) VALUES ('2','Snarfs Blog'),('1',"Liono's Leadership");
+
+INSERT INTO posts (blogID,title,content,date) VALUES (1, 'Why snarf is funny','<div>Snarf is funny just because</div>',NOW()), (1, 'Cheetarah is fast','<div>She is a cheetah after all</div>',NOW());
+

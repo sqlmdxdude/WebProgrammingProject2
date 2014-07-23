@@ -70,6 +70,16 @@
         }
         return $GLOBALS['COMMENT_ADD_FAILED'];
     }
+    // Fetches all comments to a post 
+    function getComments($postId){
+        $con = getConnection();
+        $sql = "SELECT content FROM comments WHERE postID = $postId;";
+        if($result = mysqli_query($con, $sql)){
+            return $result;
+        }
+        return null;  
+    }
+
     // Get a list of blogs available in the system
     function getBlogs(){
         $con = getConnection();
