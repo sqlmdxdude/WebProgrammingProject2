@@ -65,7 +65,9 @@
 					$row = mysqli_fetch_array($searchResult);
 					$_SESSION["username"] = $username;
 					$_SESSION["firstName"] = $row['FirstName'];
-					echo "<p>You are now logged in.</p>"; //temporary... should probably redirect home
+					$_SESSION["AUTHENTICATION_TICKET"] = TRUE;
+					echo "<p>You are now logged in.</p>";
+					redirect('index.php');
 				}
 					
 			}

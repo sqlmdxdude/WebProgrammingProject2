@@ -7,7 +7,7 @@ session_start();
 
 // AUTHENTICATION_TICKET after login this ticket will be passed around as
 //                       the credential that verifies the authenticity of the user
-if(!isset($_SESSION["AUTHENTICATION_TICKET"]))  $_SESSION["AUTHENTICATION_TICKET"] = "";
+if(!isset($_SESSION["AUTHENTICATION_TICKET"]))  $_SESSION["AUTHENTICATION_TICKET"] = FALSE;
 
 // AUTHENTICATED_USER is the name of the user after login is verified   
 if(!isset($_SESSION["AUTHENTICATED_USER"]))  $_SESSION["AUTHENTICATED_USER"] = "Liono";
