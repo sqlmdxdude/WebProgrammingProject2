@@ -98,6 +98,16 @@
         }
         return null;   
     }
+    // Tests blogID to see if it exists
+    function blogExists($blogID){
+        $con = getConnection();
+        $sql = "SELECT blogID FROM blogs a where blogID = $blogID;";
+        if($result = mysqli_query($con, $sql)){
+            return mysqli_num_rows($result);
+        }
+        return null;  
+    
+    }
     // Tests if user already has blog
     function userAlreadyOwnsBlog($blogOwner){
         $con = getConnection();

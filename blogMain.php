@@ -11,12 +11,21 @@
         <link href="badass.css" type="text/css" rel="Stylesheet" media="Screen" />
     </head>
     <body>
+        <?php  $blogExists = blogExists($_GET["blogID"]); ?>
         <div id="main">
-            <div id="header"><div id="loginstatus"><?php echo "Logged in as " .$_SESSION["AUTHENTICATED_USER"] ; ?></div><div id="logout"><a href="logout.php">Log Out</a></div><h2>Here are your posts.</h2></div>
-            <div id="blogactions"><a href="">Create A Post</a></div>
+            <div id="header"><div id="loginstatus"><?php echo "Logged in as " .$_SESSION["AUTHENTICATED_USER"] ; ?></div><div id="logout"><a href="logout.php">Log Out</a></div><?php if($blogExists){ ?><h2>Here are your posts.</h2><?php }  ?></div>
+                
+
+                 <?php   if($blogExists){ ?>
+                            <div id="blogactions"><a href="post.php?blogID=<?php echo $_GET["blogID"]; ?>">Create A Post</a></div>
+                <?php }
+                ?>
+
+
+            <div style="clear: both;"></div>
             <div id="blogcontainermain">
-                <?php 
-                    $result=getAllPosts( 1 );/*$_SESSION["AUTHENTICATED_BLOGID"]*/
+            <?php
+                    $result=getAllPosts( $_GET["blogID"] );/*$_SESSION["AUTHENTICATED_BLOGID"]*/
                     if(mysqli_num_rows($result)>0){
                     ?>
                     <table id="userposts" class="postlistings">
@@ -28,12 +37,18 @@
                                 echo"<td><a href='viewPost/postID=".$row['postID']."'>".$row['title']."</a></td><td>".$row['date']."</td>";
                                 echo "</tr>";
                             }
+                            
                             mysqli_free_result($result);
                         ?>
                     </table>
                     <?php
                     } else {
-                        echo "<div><h3>Why don't you go ahead and create some posts since you don't have any!</h3></div>";
+                        
+                        if($blogExists){
+                            echo "<div><h3>Why don't you go ahead and create some posts since you don't have any!</h3></div>";
+                        } else {
+                            echo "<div style='margin-top: 25px;'><h3>The requested blog could not be found. Go <a href='index.php'>here</a> and try again.</h3></div>";
+                        }
                     }
                 ?>
             </div>
