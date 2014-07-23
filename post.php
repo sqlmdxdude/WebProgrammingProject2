@@ -99,7 +99,7 @@
             if(mysqli_num_rows($results)>0){
             ?><table id="userposts"><tr><th>Post Title</th><th>Edit</th><th>Delete</th></tr><?php
             while($row=mysqli_fetch_assoc($results)){
-                echo "<tr><td>".$row["title"]."</td><td><form name='edit' method='post' action=''><input type='hidden' name='action' value='edit'/><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Edit Post' /></form></td><td><form name='delete' method='post' action=''><input type='hidden' name='action' value='delete'/><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Delete Post' /></form></td></tr>";
+                echo "<tr><td><a href='viewPost.php?postID=".$row["postID"]."'>".$row["title"]."</a></td><td><form name='edit' method='post' action=''><input type='hidden' name='action' value='edit'/><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Edit Post' /></form></td><td><form name='delete' method='post' action=''><input type='hidden' name='action' value='delete'/><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Delete Post' /></form></td></tr>";
                 }
             ?></table><?php
             }
