@@ -16,7 +16,7 @@
 			if(isset($_POST["contentBox"])){
 				$comContent = $_POST["contentBox"];
 				$userId = getUserId($_SESSION["username"]);
-				$postId = $_SESSION["selectedPostId"];
+				$postId = $_SESSION["POSTID"];
 				addComment($postId, $userId, $comContent);
 			}
 		?>
