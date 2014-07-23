@@ -16,46 +16,11 @@
         <div id="main">
         <div id="header"><div id="loginstatus"><?php echo "Logged in as ".  $_SESSION["AUTHENTICATED_USER"]; ?></div>
             <div id="logout"><a href="registerLogin.php">Log Out</a></div><h2>Available Blogs</h2></div>
-        <?php   
-            if(isset($_POST["action"])){
-                if($_POST["action"]=="delete"){
-                $deletedPost = deletePost($_POST["postID"]);
-                }
-            }
-
-            $results = getAllPosts($_SESSION["AUTHENTICATED_BLOGID"]);
-
-            if(mysqli_num_rows($results)>0){
-            ?><table id="userposts"><tr><th>Post Title</th><th>Edit</th><th>Delete</th></tr><?php
-            while($row=mysqli_fetch_assoc($results)){
-                echo "<tr><td>".$row["title"]."</td><td><form name='edit' method='post' action=''><input type='hidden' name='action' value='edit'/><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Edit Post' /></form></td><td><form name='delete' method='post' action=''><input type='hidden' name='action' value='delete'/><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Delete Post' /></form></td></tr>";
-                }
-            ?></table><?php
-            }
-         ?>
-		<form name="form_post" action="" method="post" onsubmit="validate()">
-		
-		<?php 
-			if(isset($_GET['postID'])){
-				$postID = $_GET['postID']; 
-				$result = viewPost($postID);
-				if ($result == null){
-					echo "<h2>Sorry we couldn't find the requested blog post. Please check back later</h2>";
-					return;
-				}
-				echo "Title:" ;
-				echo '<h2>'. $result['title'].'<h2><br>';
-				echo '<textarea id="content" name="content" rows="10" cols="10" form="form_post" value ="'. $result['content'] .'" ></textarea><br>';
-				echo '<input type="submit" name="submit" value="edit"> <input type="submit" name="submit" value="delete"><br>';
-				echo '<input type="hidden" value="' . $_GET['postID'] . '" name="postID"  />';
-			} else {
-				echo "Title: <br>";
-				echo '<input type="text" maxlength = 50 name = "title" id = "title"><br>';
-				echo '<textarea id="content" name="content" rows="10" cols="10" form="form_post" ></textarea><br>';
-				echo '<input type="submit" name="submit" value="create">';
-			}
-			
-			?>
+		<form name="form_post" action="post.php" method="post" onsubmit="validate()">
+		Title: <br>
+		<input type="text" maxlength ="50" name="title" id="title"/><br/>
+		<textarea id="content" name="content" rows="10" cols="10" ></textarea><br/>
+        <input type="submit" name="submit" value="create"/>
 		</form>
 		
 		
@@ -69,20 +34,25 @@
 			}
 		</script>
 		<?php
-			if (isset($_POST['submit'])){
+
+            if (isset($_POST['submit'])){
 				$submit = $_POST['submit'];
 				$content = $_POST['content'];
 				if ($submit == 'edit'){
 					edit();
 				}else if ($submit == 'create'){
 					echo '<h1>';
-					createPost($_SESSION["AUTHENTICATED_BLOGID"], $result['title'], $content);
+					createPost($_SESSION["AUTHENTICATED_BLOGID"], $_POST['title'], $content);
 					echo '</h1>';
 				} else if($submit== 'delete'){
 					delete();
 				}
 			}
-			
+            if(isset($_POST["action"])){
+                if($_POST["action"]=="delete"){
+                $deletedPost = deletePost($_POST["postID"]);
+                }
+            }
 			function create(){
 				if (!isset($_POST['blogID'])){
 					echo "<h1> Sorry, we are experiencing technical difficulties</h1>";
@@ -121,6 +91,19 @@
 				}
 			}
 		?>
+        <?php   
+
+
+            $results = getAllPosts($_SESSION["AUTHENTICATED_BLOGID"]);
+
+            if(mysqli_num_rows($results)>0){
+            ?><table id="userposts"><tr><th>Post Title</th><th>Edit</th><th>Delete</th></tr><?php
+            while($row=mysqli_fetch_assoc($results)){
+                echo "<tr><td>".$row["title"]."</td><td><form name='edit' method='post' action=''><input type='hidden' name='action' value='edit'/><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Edit Post' /></form></td><td><form name='delete' method='post' action=''><input type='hidden' name='action' value='delete'/><input type='hidden' name='postID' value='".$row["postID"]."'/><input type='submit' value='Delete Post' /></form></td></tr>";
+                }
+            ?></table><?php
+            }
+         ?>
         </div>
 	</body>
 </html>
