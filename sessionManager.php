@@ -16,13 +16,10 @@ if(!isset($_SESSION["AUTHENTICATED_USER"]))  $_SESSION["AUTHENTICATED_USER"] = "
 if(!isset($_SESSION["AUTHENTICATED_BLOGID"]))  $_SESSION["AUTHENTICATED_BLOGID"] = "1";
 
 // POSTID is the postid used by the database to retrieve a  specific post
-<<<<<<< HEAD
-if(!isset($_SESSION["POSTID"]))  $_SESSION["POSTID"] = "";
-=======
 if(!isset($_SESSION["POSTID"]))
     $_SESSION["POSTID"] = "";
 
 if(!isset($_SESSION["USERID"]))
     $_SESSION["USERID"] = "";
->>>>>>> a5f931590063941a07f943c1dd159b6647366b41
+
 ?>
