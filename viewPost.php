@@ -16,23 +16,21 @@
             <div id="header"><div id="loginstatus"><?php echo "Logged in as Snarf"; ?></div>
             <div id="logout"><a href="logout.php">Log Out</a></div><h2>Available Blogs</h2></div>
             <div id="blogcontainermain">
-                <table id="availableblogs" name="availableblogs" class="bloglistings">
-                    <tr><th>Blog Name</th><th>Blog Owner</th></tr>
                 <?php 
 					if (isset($_GET['postID'])){
 						$postID = $_GET['postID'];
 						$result = viewPost($postID);
-						echo "<div>";
-						echo '<div class="posttitle">'.$result['title']."</div>";
-						echo '<div class="postcontent">' .$result['content'] . "</div>";
-						// SQL to get username
-						// echo '<div class="author">' . runSelectSQL("SELECT username WHERE id=''"), '</div>';
-						echo '</div>';
-					}
+                        $rows = mysqli_fetch_array($result);
+                        
 					
-					include_once('comments.php');
                 ?>
-                </table>
+				<div id="posttitle" class="posttitle"><?php echo $rows['title']; ?></div>	
+                <div id="postcontent" class="postcontent"><?php echo $rows['content']; ?>
+                    <?php }
+                    ?>
+                </div>
+                <div id="comments"><?php include_once('comments.php');?></div>
+                
             </div>
         </div>
     </body>

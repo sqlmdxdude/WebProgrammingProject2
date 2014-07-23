@@ -63,6 +63,15 @@ a:hover{
     width: 100px;
 }
 /* For document presentation */
+.posttitle{
+    border: 1px solid #E0E0E0;
+    padding: 5px;
+    font-size: 1.2em;
+}
+.postcontent{
+    margin-left: 5px;
+    background-color: #225588;
+}
 .bloglistings, .postlistings{    
     width: 400px;
     margin-left: auto;

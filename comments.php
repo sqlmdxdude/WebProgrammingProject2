@@ -1,7 +1,4 @@
-<?php 
-    include_once "dataaccess.php";
-    include_once "sessionManager.php";
-?>
+
 <html>
 	<head>
 	</head>
