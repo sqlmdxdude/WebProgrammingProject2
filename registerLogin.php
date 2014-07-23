@@ -63,7 +63,6 @@
 				}	
 				else{
 					$row = mysqli_fetch_array($searchResult);
-					session_start();
 					$_SESSION["username"] = $username;
 					$_SESSION["firstName"] = $row['FirstName'];
 					echo "<p>You are now logged in.</p>"; //temporary... should probably redirect home
