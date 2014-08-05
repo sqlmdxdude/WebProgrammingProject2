@@ -22,6 +22,7 @@
     // Returns: blogID, or the constant $BLOG_OWNER_ALREADY_EXISTS
     function createBlog($blogOwner, $title){
         $sql = "INSERT INTO blogs (blogOwner, title) values ($blogOwner,'$title')";
+        echo $sql;
         // if blog was already created and the values to create the blog are good
         if(runDML($sql) && !userAlreadyOwnsBlog($blogOwner)){
             $sql="select blogID from blogs where blogOwner=$blogOwner and title='$title'";
@@ -112,13 +113,14 @@
     function userAlreadyOwnsBlog($blogOwner){
         $con = getConnection();
         $sql = "SELECT blogID FROM blogs where blogOwner=$blogOwner;";
+        echo $sql;
         $result=mysqli_query($con, $sql);
         $numrows = mysqli_num_rows($result);
         if($numrows>0){
             $blogID = mysqli_fetch_array($result);
             return $blogID["blogID"];
         }
-        return false;
+        return null;
     }
     // Get all posts the blog contains
     function getAllPosts($blogID){

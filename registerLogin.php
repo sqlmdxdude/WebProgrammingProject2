@@ -54,7 +54,7 @@
 			{
 				$username = $_POST["loginUsername"];
 				$password = $_POST["loginPassword"];
-				$sql_checkUser = "  SELECT Username, Password, FirstName 
+				$sql_checkUser = "  SELECT Username, Password, FirstName, ID 
 									FROM users 
 									WHERE Username = '$username' 
 									AND Password = '$password'";
@@ -68,6 +68,7 @@
 					$_SESSION["firstName"] = $row['FirstName'];
                     $_SESSION["AUTHENTICATED_USER"] = $row['FirstName'];
 					$_SESSION["AUTHENTICATION_TICKET"] = TRUE;
+                    $_SESSION["USERID"] = $row['ID'];
 					echo "<p>You are now logged in.</p>";
 					redirect('index.php', false);
 				}

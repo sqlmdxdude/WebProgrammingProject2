@@ -16,12 +16,15 @@
     </head>
     <body>
         <div id="main">
-            <div id="header"><div id="loginstatus"><?php echo "Logged in as ".  $_SESSION["AUTHENTICATED_USER"]; ?></div>
+            <div id="header"><div id="loginstatus"><?php echo "Logged in as ".  $_SESSION["AUTHENTICATED_USER"]; echo $_SESSION["USERID"]; ?></div>
             <div id="logout"><a href="registerLogin.php">Log Out</a></div><h2>Available Blogs</h2></div>
             <div id="blogcontainermain">
                 <table id="availableblogs" name="availableblogs" class="bloglistings">
                     <tr><th>Blog Name</th><th>Blog Owner</th></tr>
                 <?php 
+                    if($blogID=userAlreadyOwnsBlog($_SESSION["USERID"])){
+                        $_SESSION["AUTHENTICATED_BLOGID"]=$blogID;
+                    }
                     $result = getBlogs();
                     while($row = mysqli_fetch_assoc($result))
                     {

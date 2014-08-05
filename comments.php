@@ -12,7 +12,7 @@
             // save the last comment so it can be loaded when we get all of the comments
 			if(isset($_POST["contentBox"])){
 				$comContent = $_POST["contentBox"];
-				$userId = 1;///$_SESSION["USERID"];
+				$userId = $_SESSION["USERID"];
 				$postId = $_GET["postID"];
 				addComment($postId, $userId, $comContent);
 			}
